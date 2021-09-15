@@ -110,7 +110,7 @@ $VARIANTS | % {
         platforms: $(
           if ($_['_metadata']['distro'] -eq 'alpine') {
               if ($_['_metadata']['distro_version'] -in @( 'edge', '3.14' ) ) {
-                'linux/386,linux/amd64,linux/arm,linux/arm/v7,linux/arm64,linux/s390x'
+                'linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/s390x'
               }elseif ($_['_metadata']['distro_version'] -in @( '3.3', '3.4', '3.5' ) ) {
                 # 'linux/386,linux/amd64,linux/arm64'
                 'linux/amd64'
@@ -136,7 +136,7 @@ $VARIANTS | % {
         platforms: $(
           if ($_['_metadata']['distro'] -eq 'alpine') {
               if ($_['_metadata']['distro_version'] -in @( 'edge', '3.14' ) ) {
-                'linux/386,linux/amd64,linux/arm,linux/arm64,linux/s390x'
+                'linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/s390x'
               }elseif ($_['_metadata']['distro_version'] -in @( '3.3', '3.4', '3.5' ) ) {
                 # 'linux/386,linux/amd64,linux/arm64'
                 'linux/amd64'
@@ -162,7 +162,7 @@ $VARIANTS | % {
         platforms: $(
           if ($_['_metadata']['distro'] -eq 'alpine') {
               if ($_['_metadata']['distro_version'] -in @( 'edge', '3.14' ) ) {
-                'linux/386,linux/amd64,linux/arm,linux/arm64,linux/s390x'
+                'linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/s390x'
               }elseif ($_['_metadata']['distro_version'] -in @( '3.3', '3.4', '3.5' ) ) {
                 # 'linux/386,linux/amd64,linux/arm64'
                 'linux/amd64'
