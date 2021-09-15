@@ -7,6 +7,8 @@
 
 Dockerized ``terraform`` with useful tools.
 
+The base image is ``alpine``, and not the closed-source [``hashicorp/terraform`` image on DockerHub](https://hub.docker.com/r/hashicorp/terraform), see [here](https://github.com/hashicorp/terraform/blob/v1.0.0/Dockerfile).
+
 ## Tags
 
 | Tag | Dockerfile Build Context |
