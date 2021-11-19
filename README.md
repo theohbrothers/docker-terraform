@@ -12,8 +12,8 @@ The base image is `alpine`, and not the closed-source [`hashicorp/terraform` ima
 
 | Tag | Dockerfile Build Context |
 |:-------:|:---------:|
-| `:v1.0.6-alpine-edge` | [View](variants/v1.0.6-alpine-edge ) |
-| `:v1.0.6-sops-ssh-alpine-edge`, `:latest` | [View](variants/v1.0.6-sops-ssh-alpine-edge ) |
+| `:v1.0.11-alpine-edge` | [View](variants/v1.0.11-alpine-edge ) |
+| `:v1.0.11-sops-ssh-alpine-edge`, `:latest` | [View](variants/v1.0.11-sops-ssh-alpine-edge ) |
 | `:v0.14.9-alpine-3.14` | [View](variants/v0.14.9-alpine-3.14 ) |
 | `:v0.14.9-sops-ssh-alpine-3.14` | [View](variants/v0.14.9-sops-ssh-alpine-3.14 ) |
 | `:v0.14.4-alpine-3.13` | [View](variants/v0.14.4-alpine-3.13 ) |
