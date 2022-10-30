@@ -34,3 +34,17 @@ The base image is `alpine`, and not the closed-source [`hashicorp/terraform` ima
 | `:v0.9.5-sops-ssh-alpine-3.6` | [View](variants/v0.9.5-sops-ssh-alpine-3.6 ) |
 | `:v0.8.1-alpine-3.5` | [View](variants/v0.8.1-alpine-3.5 ) |
 | `:v0.8.1-sops-ssh-alpine-3.5` | [View](variants/v0.8.1-sops-ssh-alpine-3.5 ) |
+
+## Development
+
+Requires Windows `powershell` or [`pwsh`](https://github.com/PowerShell/PowerShell).
+
+```powershell
+# Install Generate-DockerImageVariants module: https://github.com/theohbrothers/Generate-DockerImageVariants
+Install-Module -Name Generate-DockerImageVariants -Repository PSGallery -Scope CurrentUser -Force -Verbose
+
+# Edit ./generate templates
+
+# Generate the variants
+Generate-DockerImageVariants .
+```
