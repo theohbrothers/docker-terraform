@@ -2,9 +2,9 @@
 $local:VARIANTS_MATRIX = @(
     @{
         package = 'terraform'
-        package_version = '1.0.11-r0'
+        package_version = '1.0.11-r2'
         distro = 'alpine'
-        distro_version = 'edge'
+        distro_version = '3.15'
         subvariants = @(
             @{ components = $null }
             @{ components = @( 'sops', 'ssh' ); tag_as_latest = $true }
@@ -12,7 +12,7 @@ $local:VARIANTS_MATRIX = @(
     }
     @{
         package = 'terraform'
-        package_version = '0.14.9-r3'
+        package_version = '0.14.9-r4'
         distro = 'alpine'
         distro_version = '3.14'
         subvariants = @(
@@ -124,12 +124,15 @@ $VARIANTS = @(
                     distro_version = $variant['distro_version']
                     platforms = & {
                         if ($variant['distro'] -eq 'alpine') {
-                            if ($variant['distro_version'] -in @( 'edge', '3.14' ) ) {
-                              'linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/s390x'
-                            }elseif ($variant['distro_version'] -in @( '3.3', '3.4', '3.5' ) ) {
+                            $v = $variant['distro_version'] -as [version]
+                            if ($v.Major -eq 3 -and $v.Minor -ge 3 -and $v.Minor -le 5) {
                               'linux/amd64'
-                            }else {
+                            }elseif ($v.Major -eq 3 -and $v.Minor -ge 6 -and $v.Minor -le 13) {
                               'linux/386,linux/amd64,linux/arm64,linux/s390x'
+                            }elseif ($v.Major -eq 3 -and $v.Minor -ge 14) {
+                              'linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/s390x'
+                            }else {
+                                throw 'Invalid alpine version'
                             }
                         }
                     }
