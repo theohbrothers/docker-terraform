@@ -506,7 +506,6 @@ jobs:
           ${{ github.repository }}:${{ env.VARIANT_TAG }}
           ${{ github.repository }}:${{ env.VARIANT_TAG_WITH_REF }}
           ${{ github.repository }}:${{ env.VARIANT_TAG_WITH_REF_AND_SHA_SHORT }}
-          ${{ github.repository }}:latest
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
 
@@ -759,7 +758,6 @@ jobs:
           ${{ github.repository }}:${{ env.VARIANT_TAG }}
           ${{ github.repository }}:${{ env.VARIANT_TAG_WITH_REF }}
           ${{ github.repository }}:${{ env.VARIANT_TAG_WITH_REF_AND_SHA_SHORT }}
-          ${{ github.repository }}:latest
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
 

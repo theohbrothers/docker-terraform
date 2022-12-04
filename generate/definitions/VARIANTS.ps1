@@ -17,7 +17,7 @@ $local:VARIANTS_MATRIX = @(
         distro_version = '3.16'
         subvariants = @(
             @{ components = $null }
-            @{ components = @( 'jq', 'sops', 'ssh' ); tag_as_latest = $true }
+            @{ components = @( 'jq', 'sops', 'ssh' ); }
         )
     }
     @{
@@ -27,7 +27,7 @@ $local:VARIANTS_MATRIX = @(
         distro_version = '3.15'
         subvariants = @(
             @{ components = $null }
-            @{ components = @( 'jq', 'sops', 'ssh' ); tag_as_latest = $true }
+            @{ components = @( 'jq', 'sops', 'ssh' ); }
         )
     }
     @{
