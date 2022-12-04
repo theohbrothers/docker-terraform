@@ -15,9 +15,9 @@ The base image is `alpine`, and not the closed-source [`hashicorp/terraform` ima
 | `:v1.3.4-alpine-3.17` | [View](variants/v1.3.4-alpine-3.17 ) |
 | `:v1.3.4-jq-sops-ssh-alpine-3.17`, `:latest` | [View](variants/v1.3.4-jq-sops-ssh-alpine-3.17 ) |
 | `:v1.2.0-alpine-3.16` | [View](variants/v1.2.0-alpine-3.16 ) |
-| `:v1.2.0-jq-sops-ssh-alpine-3.16`, `:latest` | [View](variants/v1.2.0-jq-sops-ssh-alpine-3.16 ) |
+| `:v1.2.0-jq-sops-ssh-alpine-3.16` | [View](variants/v1.2.0-jq-sops-ssh-alpine-3.16 ) |
 | `:v1.0.11-alpine-3.15` | [View](variants/v1.0.11-alpine-3.15 ) |
-| `:v1.0.11-jq-sops-ssh-alpine-3.15`, `:latest` | [View](variants/v1.0.11-jq-sops-ssh-alpine-3.15 ) |
+| `:v1.0.11-jq-sops-ssh-alpine-3.15` | [View](variants/v1.0.11-jq-sops-ssh-alpine-3.15 ) |
 | `:v0.14.9-alpine-3.14` | [View](variants/v0.14.9-alpine-3.14 ) |
 | `:v0.14.9-jq-sops-ssh-alpine-3.14` | [View](variants/v0.14.9-jq-sops-ssh-alpine-3.14 ) |
 | `:v0.14.4-alpine-3.13` | [View](variants/v0.14.4-alpine-3.13 ) |
