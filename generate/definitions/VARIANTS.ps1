@@ -7,6 +7,7 @@ $local:VARIANTS_MATRIX = @(
         distro_version = '3.17'
         subvariants = @(
             @{ components = @( 'jq', 'sops', 'ssh' ); tag_as_latest = $true }
+            @{ components = @( 'jq', 'libvirt', 'sops', 'ssh' )}
         )
     }
     @{
@@ -15,7 +16,7 @@ $local:VARIANTS_MATRIX = @(
         distro = 'alpine'
         distro_version = '3.16'
         subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ); }
+            @{ components = @( 'jq', 'sops', 'ssh' ) }
         )
     }
     @{
@@ -24,7 +25,7 @@ $local:VARIANTS_MATRIX = @(
         distro = 'alpine'
         distro_version = '3.15'
         subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ); }
+            @{ components = @( 'jq', 'sops', 'ssh' ) }
         )
     }
     @{

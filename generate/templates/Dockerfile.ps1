@@ -17,6 +17,14 @@ RUN apk add --no-cache jq
 "@
 }
 
+if ( $VARIANT['_metadata']['components'] -contains 'libvirt' ) {
+    @"
+RUN apk add --no-cache libvirt-client
+
+
+"@
+}
+
 if ( $VARIANT['_metadata']['components'] -contains 'sops' ) {
     if ( $VARIANT['_metadata']['distro'] -eq 'alpine' -and $VARIANT['_metadata']['distro_version'] -in @('3.6', '3.5', '3.4', '3.3') ) {
         @"
