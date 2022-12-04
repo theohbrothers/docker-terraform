@@ -2,6 +2,26 @@
 $local:VARIANTS_MATRIX = @(
     @{
         package = 'terraform'
+        package_version = '1.3.4-r0'
+        distro = 'alpine'
+        distro_version = '3.17'
+        subvariants = @(
+            @{ components = $null }
+            @{ components = @( 'jq', 'sops', 'ssh' ); tag_as_latest = $true }
+        )
+    }
+    @{
+        package = 'terraform'
+        package_version = '1.2.0-r4'
+        distro = 'alpine'
+        distro_version = '3.16'
+        subvariants = @(
+            @{ components = $null }
+            @{ components = @( 'jq', 'sops', 'ssh' ); tag_as_latest = $true }
+        )
+    }
+    @{
+        package = 'terraform'
         package_version = '1.0.11-r2'
         distro = 'alpine'
         distro_version = '3.15'
