@@ -11,6 +11,6 @@ RUN wget -qO- https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7
 
 RUN apk add --no-cache gnupg
 
-RUN apk add --no-cache openssh-client
+RUN apk add --no-cache openssh-client sshpass
 
 CMD [ "terraform" ]
