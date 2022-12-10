@@ -64,6 +64,9 @@ RUN apk add --no-cache openssh-client sshpass
 }
 
 @"
+# Disable telemetry. See: https://developer.hashicorp.com/terraform/cli/commands#upgrade-and-security-bulletin-checks
+ENV CHECKPOINT_DISABLE=1
+
 CMD [ "terraform" ]
 
 "@
