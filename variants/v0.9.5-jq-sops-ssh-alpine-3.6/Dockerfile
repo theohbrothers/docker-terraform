@@ -5,6 +5,8 @@ RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 
 RUN apk add --no-cache terraform=0.9.5-r0
 
+RUN apk add --no-cache ca-certificates
+
 RUN apk add --no-cache jq
 
 # Fix generic certification validation errors in alpine 3.5: https://github.com/docker-library/official-images/issues/2773#issuecomment-350431934

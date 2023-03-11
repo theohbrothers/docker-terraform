@@ -5,6 +5,8 @@ RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 
 RUN apk add --no-cache terraform=0.14.4-r0
 
+RUN apk add --no-cache ca-certificates
+
 RUN apk add --no-cache jq
 
 RUN set -eux; \
