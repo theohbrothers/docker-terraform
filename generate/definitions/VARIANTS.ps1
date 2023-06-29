@@ -1,132 +1,40 @@
-# Docker image variants' definitions
+# Get latest patch versions:
+#   VERSIONS=$( curl https://releases.hashicorp.com/terraform/ | grep '/terraform/' | cut -d '/' -f3 | grep -v '\-' )
+#   VERSIONS_MAJOR_MINOR=$( echo "$VERSIONS" | cut -d '.' -f1,2 | uniq | sed 's/$/./' )     # E.g. 1.5.
+#   VERSIONS_MAJOR_MINOR_REGEX=$( echo "$VERSIONS_MAJOR_MINOR" | sed 's/\./\\./g' )         # E.g. 1\.5\.
+#   for i in $VERSIONS_MAJOR_MINOR_REGEX; do echo "$VERSIONS" | grep -E "$i" | head -n1; done   # E.g. 1.5.2
+$local:PACKAGE_VERSIONS = @(
+    '1.5.2'
+    '1.4.6'
+    '1.3.9'
+    '1.2.9'
+    '1.1.9'
+    '1.0.11'
+    '0.15.5'
+    '0.14.11'
+    '0.13.7'
+    '0.12.31'
+    '0.11.15'
+    '0.10.8'
+    '0.9.11'
+    '0.8.8'
+    # '0.7.13'
+    # '0.6.16'
+    # '0.5.3'
+    # '0.4.2'
+    # '0.3.7'
+    # '0.2.2'
+    # '0.1.1'
+)
 $local:VARIANTS_MATRIX = @(
-    @{
-        package = 'terraform'
-        package_version = '1.4.6-r1'
-        distro = 'alpine'
-        distro_version = '3.18'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ); tag_as_latest = $true }
-            @{ components = @( 'jq', 'libvirt', 'sops', 'ssh' )}
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '1.3.4-r4'
-        distro = 'alpine'
-        distro_version = '3.17'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-            @{ components = @( 'jq', 'libvirt', 'sops', 'ssh' )}
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '1.2.0-r4'
-        distro = 'alpine'
-        distro_version = '3.16'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '1.0.11-r2'
-        distro = 'alpine'
-        distro_version = '3.15'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.14.9-r4'
-        distro = 'alpine'
-        distro_version = '3.14'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.14.4-r0'
-        distro = 'alpine'
-        distro_version = '3.13'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.12.25-r0'
-        distro = 'alpine'
-        distro_version = '3.12'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.12.17-r1'
-        distro = 'alpine'
-        distro_version = '3.11'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.12.6-r0'
-        distro = 'alpine'
-        distro_version = '3.10'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.11.8-r0'
-        distro = 'alpine'
-        distro_version = '3.9'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.11.7-r0'
-        distro = 'alpine'
-        distro_version = '3.8'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.11.0-r0'
-        distro = 'alpine'
-        distro_version = '3.7'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.9.5-r0'
-        distro = 'alpine'
-        distro_version = '3.6'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
-    }
-    @{
-        package = 'terraform'
-        package_version = '0.8.1-r0'
-        distro = 'alpine'
-        distro_version = '3.5'
-        subvariants = @(
-            @{ components = @( 'jq', 'sops', 'ssh' ) }
-        )
+    foreach ($v in $local:PACKAGE_VERSIONS) {
+        @{
+            package_version = $v
+            subvariants = @(
+                @{ components = @( 'jq', 'sops', 'ssh' ) }
+                @{ components = @( 'jq', 'libvirt', 'sops', 'ssh' )}
+            )
+        }
     }
 )
 $VARIANTS = @(
@@ -137,37 +45,22 @@ $VARIANTS = @(
                 _metadata = @{
                     package = $variant['package']
                     package_version = $variant['package_version']
-                    package_version_semver = "v$( $variant['package_version'] )" -replace '-r\d+', ''   # E.g. Strip out the '-r' in '2.3.0.0-r1'
-                    distro = $variant['distro']
-                    distro_version = $variant['distro_version']
                     platforms = & {
-                        if ($variant['distro'] -eq 'alpine') {
-                            $v = $variant['distro_version'] -as [version]
-                            if ($v.Major -eq 3 -and $v.Minor -ge 3 -and $v.Minor -le 5) {
-                              'linux/amd64'
-                            }elseif ($v.Major -eq 3 -and $v.Minor -ge 6 -and $v.Minor -le 13) {
-                              'linux/386,linux/amd64,linux/arm64,linux/s390x'
-                            }elseif ($v.Major -eq 3 -and $v.Minor -ge 14) {
-                              'linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/s390x'
-                            }else {
-                                throw 'Invalid alpine version'
-                            }
+                        $v = $variant['package_version'] -as [version]
+                        if ($v.Major -eq 0 -and $v.Minor -le 10) {
+                            'linux/386,linux/amd64'
+                        }else {
+                            'linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64'
                         }
                     }
                     components = $subVariant['components']
                 }
-                # Docker image tag. E.g. 'v2.3.0.0-alpine-3.6'
+                # Docker image tag. E.g. 'v1.5.2-alpine-3.6'
                 tag = @(
-                        "v$( $variant['package_version'] )" -replace '-r\d+', ''    # E.g. Strip out the '-r' in '2.3.0.0-r1'
+                        "v$( $variant['package_version'] )"
                         $subVariant['components'] | ? { $_ }
-                        $variant['distro']
-                        $variant['distro_version']
                 ) -join '-'
-                tag_as_latest = if ( $subVariant.Contains('tag_as_latest') ) {
-                    $subVariant['tag_as_latest']
-                } else {
-                    $false
-                }
+                tag_as_latest = if ($variant['package_version'] -eq $local:PACKAGE_VERSIONS[0] -and $subVariant['components'].Count -eq 0) { $true } else { $false }
             }
         }
     }
