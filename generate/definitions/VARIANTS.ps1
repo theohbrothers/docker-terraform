@@ -33,7 +33,7 @@ $local:VARIANTS_MATRIX = @(
             subvariants = @(
                 @{ components = @() }
                 @{ components = @( 'jq', 'sops', 'ssh' ) }
-                @{ components = @( 'jq', 'libvirt', 'sops', 'ssh' )}
+                @{ components = @( 'jq', 'libvirt', 'sops', 'ssh' ) }
             )
         }
     }
@@ -56,10 +56,10 @@ $VARIANTS = @(
                     }
                     components = $subVariant['components']
                 }
-                # Docker image tag. E.g. 'v1.5.2-alpine-3.6'
+                # Docker image tag. E.g. 'v1.5.2'
                 tag = @(
-                        "v$( $variant['package_version'] )"
-                        $subVariant['components'] | ? { $_ }
+                    "v$( $variant['package_version'] )"
+                    $subVariant['components'] | ? { $_ }
                 ) -join '-'
                 tag_as_latest = if ($variant['package_version'] -eq $local:PACKAGE_VERSIONS[0] -and $subVariant['components'].Count -eq 0) { $true } else { $false }
             }
