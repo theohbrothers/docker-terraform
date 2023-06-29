@@ -112,7 +112,6 @@ RUN set -eux; \
 
 "@
 
-
     if ($o['archiveformat'] -match '\.tar\.gz|\.tgz') {
         if ($o['archivefiles'].Count -gt 0) {
 @"
@@ -143,6 +142,7 @@ RUN set -eux; \
 
 "@
     }
+
     $destination = if ($o.Contains('destination')) { $o['destination'] } else { "/usr/local/bin/$( $o['binary'] )" }
     $destinationDir = Split-Path $destination -Parent
 @"
