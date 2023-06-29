@@ -2,7 +2,7 @@
 $local:VARIANTS_MATRIX = @(
     @{
         package = 'terraform'
-        package_version = '1.3.4-r2'
+        package_version = '1.3.4-r4'
         distro = 'alpine'
         distro_version = '3.17'
         subvariants = @(
