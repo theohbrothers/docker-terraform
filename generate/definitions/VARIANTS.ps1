@@ -3,31 +3,10 @@
 #   VERSIONS_MAJOR_MINOR=$( echo "$VERSIONS" | cut -d '.' -f1,2 | uniq | sed 's/$/./' )     # E.g. 1.5.
 #   VERSIONS_MAJOR_MINOR_REGEX=$( echo "$VERSIONS_MAJOR_MINOR" | sed 's/\./\\./g' )         # E.g. 1\.5\.
 #   for i in $VERSIONS_MAJOR_MINOR_REGEX; do echo "$VERSIONS" | grep -E "$i" | head -n1; done   # E.g. 1.5.2
-$local:PACKAGE_VERSIONS = @(
-    '1.5.2'
-    '1.4.6'
-    '1.3.9'
-    '1.2.9'
-    '1.1.9'
-    '1.0.11'
-    '0.15.5'
-    '0.14.11'
-    '0.13.7'
-    '0.12.31'
-    '0.11.15'
-    '0.10.8'
-    '0.9.11'
-    '0.8.8'
-    # '0.7.13'
-    # '0.6.16'
-    # '0.5.3'
-    # '0.4.2'
-    # '0.3.7'
-    # '0.2.2'
-    # '0.1.1'
-)
+$local:VERSIONS = @( Get-Content $PSScriptRoot/versions.json -Encoding utf8 -raw | ConvertFrom-Json )
+
 $local:VARIANTS_MATRIX = @(
-    foreach ($v in $local:PACKAGE_VERSIONS) {
+    foreach ($v in $local:VERSIONS) {
         @{
             package_version = $v
             subvariants = @(
@@ -61,7 +40,7 @@ $VARIANTS = @(
                     "v$( $variant['package_version'] )"
                     $subVariant['components'] | ? { $_ }
                 ) -join '-'
-                tag_as_latest = if ($variant['package_version'] -eq $local:PACKAGE_VERSIONS[0] -and $subVariant['components'].Count -eq 0) { $true } else { $false }
+                tag_as_latest = if ($variant['package_version'] -eq $local:VERSIONS[0] -and $subVariant['components'].Count -eq 0) { $true } else { $false }
             }
         }
     }
