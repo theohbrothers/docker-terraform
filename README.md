@@ -12,9 +12,9 @@ The base image is `alpine`, and not the closed-source [`hashicorp/terraform` ima
 
 | Tag | Dockerfile Build Context |
 |:-------:|:---------:|
-| `:v1.5.2`, `:latest` | [View](variants/v1.5.2) |
-| `:v1.5.2-jq-sops-ssh` | [View](variants/v1.5.2-jq-sops-ssh) |
-| `:v1.5.2-jq-libvirt-sops-ssh` | [View](variants/v1.5.2-jq-libvirt-sops-ssh) |
+| `:v1.5.7`, `:latest` | [View](variants/v1.5.7) |
+| `:v1.5.7-jq-sops-ssh` | [View](variants/v1.5.7-jq-sops-ssh) |
+| `:v1.5.7-jq-libvirt-sops-ssh` | [View](variants/v1.5.7-jq-libvirt-sops-ssh) |
 | `:v1.4.6` | [View](variants/v1.4.6) |
 | `:v1.4.6-jq-sops-ssh` | [View](variants/v1.4.6-jq-sops-ssh) |
 | `:v1.4.6-jq-libvirt-sops-ssh` | [View](variants/v1.4.6-jq-libvirt-sops-ssh) |

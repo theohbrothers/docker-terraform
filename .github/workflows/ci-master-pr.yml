@@ -32,10 +32,10 @@ jobs:
       run: |
         git diff --exit-code
 
-  build-v1-5-2:
+  build-v1-5-7:
     runs-on: ubuntu-latest
     env:
-      VARIANT: v1.5.2
+      VARIANT: v1.5.7
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -107,7 +107,7 @@ jobs:
       if: github.event_name == 'pull_request'
       uses: docker/build-push-action@v3
       with:
-        context: variants/v1.5.2
+        context: variants/v1.5.7
         platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: false
         tags: |
@@ -121,7 +121,7 @@ jobs:
       if: github.ref == 'refs/heads/master'
       uses: docker/build-push-action@v3
       with:
-        context: variants/v1.5.2
+        context: variants/v1.5.7
         platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: true
         tags: |
@@ -134,7 +134,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       uses: docker/build-push-action@v3
       with:
-        context: variants/v1.5.2
+        context: variants/v1.5.7
         platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: true
         tags: |
@@ -153,10 +153,10 @@ jobs:
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
-  build-v1-5-2-jq-sops-ssh:
+  build-v1-5-7-jq-sops-ssh:
     runs-on: ubuntu-latest
     env:
-      VARIANT: v1.5.2-jq-sops-ssh
+      VARIANT: v1.5.7-jq-sops-ssh
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -228,7 +228,7 @@ jobs:
       if: github.event_name == 'pull_request'
       uses: docker/build-push-action@v3
       with:
-        context: variants/v1.5.2-jq-sops-ssh
+        context: variants/v1.5.7-jq-sops-ssh
         platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: false
         tags: |
@@ -242,7 +242,7 @@ jobs:
       if: github.ref == 'refs/heads/master'
       uses: docker/build-push-action@v3
       with:
-        context: variants/v1.5.2-jq-sops-ssh
+        context: variants/v1.5.7-jq-sops-ssh
         platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: true
         tags: |
@@ -255,7 +255,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       uses: docker/build-push-action@v3
       with:
-        context: variants/v1.5.2-jq-sops-ssh
+        context: variants/v1.5.7-jq-sops-ssh
         platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: true
         tags: |
@@ -273,10 +273,10 @@ jobs:
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
-  build-v1-5-2-jq-libvirt-sops-ssh:
+  build-v1-5-7-jq-libvirt-sops-ssh:
     runs-on: ubuntu-latest
     env:
-      VARIANT: v1.5.2-jq-libvirt-sops-ssh
+      VARIANT: v1.5.7-jq-libvirt-sops-ssh
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -348,7 +348,7 @@ jobs:
       if: github.event_name == 'pull_request'
       uses: docker/build-push-action@v3
       with:
-        context: variants/v1.5.2-jq-libvirt-sops-ssh
+        context: variants/v1.5.7-jq-libvirt-sops-ssh
         platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: false
         tags: |
@@ -362,7 +362,7 @@ jobs:
       if: github.ref == 'refs/heads/master'
       uses: docker/build-push-action@v3
       with:
-        context: variants/v1.5.2-jq-libvirt-sops-ssh
+        context: variants/v1.5.7-jq-libvirt-sops-ssh
         platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: true
         tags: |
@@ -375,7 +375,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       uses: docker/build-push-action@v3
       with:
-        context: variants/v1.5.2-jq-libvirt-sops-ssh
+        context: variants/v1.5.7-jq-libvirt-sops-ssh
         platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: true
         tags: |
@@ -5074,7 +5074,7 @@ jobs:
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
   update-draft-release:
-    needs: [build-v1-5-2, build-v1-5-2-jq-sops-ssh, build-v1-5-2-jq-libvirt-sops-ssh, build-v1-4-6, build-v1-4-6-jq-sops-ssh, build-v1-4-6-jq-libvirt-sops-ssh, build-v1-3-9, build-v1-3-9-jq-sops-ssh, build-v1-3-9-jq-libvirt-sops-ssh, build-v1-2-9, build-v1-2-9-jq-sops-ssh, build-v1-2-9-jq-libvirt-sops-ssh, build-v1-1-9, build-v1-1-9-jq-sops-ssh, build-v1-1-9-jq-libvirt-sops-ssh, build-v1-0-11, build-v1-0-11-jq-sops-ssh, build-v1-0-11-jq-libvirt-sops-ssh, build-v0-15-5, build-v0-15-5-jq-sops-ssh, build-v0-15-5-jq-libvirt-sops-ssh, build-v0-14-11, build-v0-14-11-jq-sops-ssh, build-v0-14-11-jq-libvirt-sops-ssh, build-v0-13-7, build-v0-13-7-jq-sops-ssh, build-v0-13-7-jq-libvirt-sops-ssh, build-v0-12-31, build-v0-12-31-jq-sops-ssh, build-v0-12-31-jq-libvirt-sops-ssh, build-v0-11-15, build-v0-11-15-jq-sops-ssh, build-v0-11-15-jq-libvirt-sops-ssh, build-v0-10-8, build-v0-10-8-jq-sops-ssh, build-v0-10-8-jq-libvirt-sops-ssh, build-v0-9-11, build-v0-9-11-jq-sops-ssh, build-v0-9-11-jq-libvirt-sops-ssh, build-v0-8-8, build-v0-8-8-jq-sops-ssh, build-v0-8-8-jq-libvirt-sops-ssh]
+    needs: [build-v1-5-7, build-v1-5-7-jq-sops-ssh, build-v1-5-7-jq-libvirt-sops-ssh, build-v1-4-6, build-v1-4-6-jq-sops-ssh, build-v1-4-6-jq-libvirt-sops-ssh, build-v1-3-9, build-v1-3-9-jq-sops-ssh, build-v1-3-9-jq-libvirt-sops-ssh, build-v1-2-9, build-v1-2-9-jq-sops-ssh, build-v1-2-9-jq-libvirt-sops-ssh, build-v1-1-9, build-v1-1-9-jq-sops-ssh, build-v1-1-9-jq-libvirt-sops-ssh, build-v1-0-11, build-v1-0-11-jq-sops-ssh, build-v1-0-11-jq-libvirt-sops-ssh, build-v0-15-5, build-v0-15-5-jq-sops-ssh, build-v0-15-5-jq-libvirt-sops-ssh, build-v0-14-11, build-v0-14-11-jq-sops-ssh, build-v0-14-11-jq-libvirt-sops-ssh, build-v0-13-7, build-v0-13-7-jq-sops-ssh, build-v0-13-7-jq-libvirt-sops-ssh, build-v0-12-31, build-v0-12-31-jq-sops-ssh, build-v0-12-31-jq-libvirt-sops-ssh, build-v0-11-15, build-v0-11-15-jq-sops-ssh, build-v0-11-15-jq-libvirt-sops-ssh, build-v0-10-8, build-v0-10-8-jq-sops-ssh, build-v0-10-8-jq-libvirt-sops-ssh, build-v0-9-11, build-v0-9-11-jq-sops-ssh, build-v0-9-11-jq-libvirt-sops-ssh, build-v0-8-8, build-v0-8-8-jq-sops-ssh, build-v0-8-8-jq-libvirt-sops-ssh]
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -5087,7 +5087,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-draft-release:
-    needs: [build-v1-5-2, build-v1-5-2-jq-sops-ssh, build-v1-5-2-jq-libvirt-sops-ssh, build-v1-4-6, build-v1-4-6-jq-sops-ssh, build-v1-4-6-jq-libvirt-sops-ssh, build-v1-3-9, build-v1-3-9-jq-sops-ssh, build-v1-3-9-jq-libvirt-sops-ssh, build-v1-2-9, build-v1-2-9-jq-sops-ssh, build-v1-2-9-jq-libvirt-sops-ssh, build-v1-1-9, build-v1-1-9-jq-sops-ssh, build-v1-1-9-jq-libvirt-sops-ssh, build-v1-0-11, build-v1-0-11-jq-sops-ssh, build-v1-0-11-jq-libvirt-sops-ssh, build-v0-15-5, build-v0-15-5-jq-sops-ssh, build-v0-15-5-jq-libvirt-sops-ssh, build-v0-14-11, build-v0-14-11-jq-sops-ssh, build-v0-14-11-jq-libvirt-sops-ssh, build-v0-13-7, build-v0-13-7-jq-sops-ssh, build-v0-13-7-jq-libvirt-sops-ssh, build-v0-12-31, build-v0-12-31-jq-sops-ssh, build-v0-12-31-jq-libvirt-sops-ssh, build-v0-11-15, build-v0-11-15-jq-sops-ssh, build-v0-11-15-jq-libvirt-sops-ssh, build-v0-10-8, build-v0-10-8-jq-sops-ssh, build-v0-10-8-jq-libvirt-sops-ssh, build-v0-9-11, build-v0-9-11-jq-sops-ssh, build-v0-9-11-jq-libvirt-sops-ssh, build-v0-8-8, build-v0-8-8-jq-sops-ssh, build-v0-8-8-jq-libvirt-sops-ssh]
+    needs: [build-v1-5-7, build-v1-5-7-jq-sops-ssh, build-v1-5-7-jq-libvirt-sops-ssh, build-v1-4-6, build-v1-4-6-jq-sops-ssh, build-v1-4-6-jq-libvirt-sops-ssh, build-v1-3-9, build-v1-3-9-jq-sops-ssh, build-v1-3-9-jq-libvirt-sops-ssh, build-v1-2-9, build-v1-2-9-jq-sops-ssh, build-v1-2-9-jq-libvirt-sops-ssh, build-v1-1-9, build-v1-1-9-jq-sops-ssh, build-v1-1-9-jq-libvirt-sops-ssh, build-v1-0-11, build-v1-0-11-jq-sops-ssh, build-v1-0-11-jq-libvirt-sops-ssh, build-v0-15-5, build-v0-15-5-jq-sops-ssh, build-v0-15-5-jq-libvirt-sops-ssh, build-v0-14-11, build-v0-14-11-jq-sops-ssh, build-v0-14-11-jq-libvirt-sops-ssh, build-v0-13-7, build-v0-13-7-jq-sops-ssh, build-v0-13-7-jq-libvirt-sops-ssh, build-v0-12-31, build-v0-12-31-jq-sops-ssh, build-v0-12-31-jq-libvirt-sops-ssh, build-v0-11-15, build-v0-11-15-jq-sops-ssh, build-v0-11-15-jq-libvirt-sops-ssh, build-v0-10-8, build-v0-10-8-jq-sops-ssh, build-v0-10-8-jq-libvirt-sops-ssh, build-v0-9-11, build-v0-9-11-jq-sops-ssh, build-v0-9-11-jq-libvirt-sops-ssh, build-v0-8-8, build-v0-8-8-jq-sops-ssh, build-v0-8-8-jq-libvirt-sops-ssh]
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
@@ -5102,7 +5102,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   update-dockerhub-description:
-    needs: [build-v1-5-2, build-v1-5-2-jq-sops-ssh, build-v1-5-2-jq-libvirt-sops-ssh, build-v1-4-6, build-v1-4-6-jq-sops-ssh, build-v1-4-6-jq-libvirt-sops-ssh, build-v1-3-9, build-v1-3-9-jq-sops-ssh, build-v1-3-9-jq-libvirt-sops-ssh, build-v1-2-9, build-v1-2-9-jq-sops-ssh, build-v1-2-9-jq-libvirt-sops-ssh, build-v1-1-9, build-v1-1-9-jq-sops-ssh, build-v1-1-9-jq-libvirt-sops-ssh, build-v1-0-11, build-v1-0-11-jq-sops-ssh, build-v1-0-11-jq-libvirt-sops-ssh, build-v0-15-5, build-v0-15-5-jq-sops-ssh, build-v0-15-5-jq-libvirt-sops-ssh, build-v0-14-11, build-v0-14-11-jq-sops-ssh, build-v0-14-11-jq-libvirt-sops-ssh, build-v0-13-7, build-v0-13-7-jq-sops-ssh, build-v0-13-7-jq-libvirt-sops-ssh, build-v0-12-31, build-v0-12-31-jq-sops-ssh, build-v0-12-31-jq-libvirt-sops-ssh, build-v0-11-15, build-v0-11-15-jq-sops-ssh, build-v0-11-15-jq-libvirt-sops-ssh, build-v0-10-8, build-v0-10-8-jq-sops-ssh, build-v0-10-8-jq-libvirt-sops-ssh, build-v0-9-11, build-v0-9-11-jq-sops-ssh, build-v0-9-11-jq-libvirt-sops-ssh, build-v0-8-8, build-v0-8-8-jq-sops-ssh, build-v0-8-8-jq-libvirt-sops-ssh]
+    needs: [build-v1-5-7, build-v1-5-7-jq-sops-ssh, build-v1-5-7-jq-libvirt-sops-ssh, build-v1-4-6, build-v1-4-6-jq-sops-ssh, build-v1-4-6-jq-libvirt-sops-ssh, build-v1-3-9, build-v1-3-9-jq-sops-ssh, build-v1-3-9-jq-libvirt-sops-ssh, build-v1-2-9, build-v1-2-9-jq-sops-ssh, build-v1-2-9-jq-libvirt-sops-ssh, build-v1-1-9, build-v1-1-9-jq-sops-ssh, build-v1-1-9-jq-libvirt-sops-ssh, build-v1-0-11, build-v1-0-11-jq-sops-ssh, build-v1-0-11-jq-libvirt-sops-ssh, build-v0-15-5, build-v0-15-5-jq-sops-ssh, build-v0-15-5-jq-libvirt-sops-ssh, build-v0-14-11, build-v0-14-11-jq-sops-ssh, build-v0-14-11-jq-libvirt-sops-ssh, build-v0-13-7, build-v0-13-7-jq-sops-ssh, build-v0-13-7-jq-libvirt-sops-ssh, build-v0-12-31, build-v0-12-31-jq-sops-ssh, build-v0-12-31-jq-libvirt-sops-ssh, build-v0-11-15, build-v0-11-15-jq-sops-ssh, build-v0-11-15-jq-libvirt-sops-ssh, build-v0-10-8, build-v0-10-8-jq-sops-ssh, build-v0-10-8-jq-libvirt-sops-ssh, build-v0-9-11, build-v0-9-11-jq-sops-ssh, build-v0-9-11-jq-libvirt-sops-ssh, build-v0-8-8, build-v0-8-8-jq-sops-ssh, build-v0-8-8-jq-libvirt-sops-ssh]
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
