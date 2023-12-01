@@ -7,19 +7,19 @@ RUN set -eux; \
     TERRAFORM_VERSION=0.8.8; \
     case "$( uname -m )" in \
         'x86') \
-            URL=https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_386.zip; \
+            URL="https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_386.zip"; \
             SHA256=d483dd90baf752e18af030738a68540e8237ceee5a9ce6f3882cfa7efda7ac1b; \
             ;; \
         'x86_64') \
-            URL=https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_amd64.zip; \
+            URL="https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_amd64.zip"; \
             SHA256=403d65b8a728b8dffcdd829262b57949bce9748b91f2e82dfd6d61692236b376; \
             ;; \
         'armhf') \
-            URL=https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_arm.zip; \
+            URL="https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_arm.zip"; \
             SHA256=7591914ba8a64db00b8fc8ac9379643a519a2f796ffe2cc424790a7d1bd99763; \
             ;; \
         'armv7l') \
-            URL=https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_arm.zip; \
+            URL="https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_arm.zip"; \
             SHA256=7591914ba8a64db00b8fc8ac9379643a519a2f796ffe2cc424790a7d1bd99763; \
             ;; \
         *) \
