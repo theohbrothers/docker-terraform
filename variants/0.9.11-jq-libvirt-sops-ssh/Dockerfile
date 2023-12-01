@@ -7,19 +7,19 @@ RUN set -eux; \
     TERRAFORM_VERSION=0.9.11; \
     case "$( uname -m )" in \
         'x86') \
-            URL=https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_386.zip; \
+            URL="https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_386.zip"; \
             SHA256=5c4b95c0d4967051763ded642f868d4fd7783eb49d6a07f57c1d2e0de0e1cdf4; \
             ;; \
         'x86_64') \
-            URL=https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_amd64.zip; \
+            URL="https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_amd64.zip"; \
             SHA256=804d31cfa5fee5c2b1bff7816b64f0e26b1d766ac347c67091adccc2626e16f3; \
             ;; \
         'armhf') \
-            URL=https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_arm.zip; \
+            URL="https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_arm.zip"; \
             SHA256=4f9ae0f2135dd98d752adb36b251c616486ec1dcf709a9ceda8e04787b287023; \
             ;; \
         'armv7l') \
-            URL=https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_arm.zip; \
+            URL="https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_arm.zip"; \
             SHA256=4f9ae0f2135dd98d752adb36b251c616486ec1dcf709a9ceda8e04787b287023; \
             ;; \
         *) \
