@@ -32,7 +32,8 @@ RUN set -eux; \
     echo "$SHA256  $FILE" | sha256sum -c -; \
     unzip "$FILE" terraform; \
     mkdir -pv /usr/local/bin; \
-    mv -v terraform /usr/local/bin/terraform; \
+    BIN=$( find . -type f -name "terraform" | head -n1 ); \
+    mv -v "$BIN" /usr/local/bin/terraform; \
     chmod +x /usr/local/bin/terraform; \
     CHECKPOINT_DISABLE=1 terraform version; \
     :
