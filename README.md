@@ -13,72 +13,68 @@ The base image is `alpine`. The image is not the closed-source [`hashicorp/terra
 | Tag | Dockerfile Build Context |
 |:-------:|:---------:|
 | `:1.12.0`, `:latest` | [View](variants/1.12.0) |
-| `:1.12.0-jq-sops-ssh` | [View](variants/1.12.0-jq-sops-ssh) |
-| `:1.12.0-jq-libvirt-sops-ssh` | [View](variants/1.12.0-jq-libvirt-sops-ssh) |
+| `:1.12.0-jq-sops-ssh-step` | [View](variants/1.12.0-jq-sops-ssh-step) |
+| `:1.12.0-jq-libvirt-sops-ssh-step` | [View](variants/1.12.0-jq-libvirt-sops-ssh-step) |
 | `:1.11.4` | [View](variants/1.11.4) |
-| `:1.11.4-jq-sops-ssh` | [View](variants/1.11.4-jq-sops-ssh) |
-| `:1.11.4-jq-libvirt-sops-ssh` | [View](variants/1.11.4-jq-libvirt-sops-ssh) |
+| `:1.11.4-jq-sops-ssh-step` | [View](variants/1.11.4-jq-sops-ssh-step) |
+| `:1.11.4-jq-libvirt-sops-ssh-step` | [View](variants/1.11.4-jq-libvirt-sops-ssh-step) |
 | `:1.10.5` | [View](variants/1.10.5) |
-| `:1.10.5-jq-sops-ssh` | [View](variants/1.10.5-jq-sops-ssh) |
-| `:1.10.5-jq-libvirt-sops-ssh` | [View](variants/1.10.5-jq-libvirt-sops-ssh) |
+| `:1.10.5-jq-sops-ssh-step` | [View](variants/1.10.5-jq-sops-ssh-step) |
+| `:1.10.5-jq-libvirt-sops-ssh-step` | [View](variants/1.10.5-jq-libvirt-sops-ssh-step) |
 | `:1.9.8` | [View](variants/1.9.8) |
-| `:1.9.8-jq-sops-ssh` | [View](variants/1.9.8-jq-sops-ssh) |
-| `:1.9.8-jq-libvirt-sops-ssh` | [View](variants/1.9.8-jq-libvirt-sops-ssh) |
+| `:1.9.8-jq-sops-ssh-step` | [View](variants/1.9.8-jq-sops-ssh-step) |
+| `:1.9.8-jq-libvirt-sops-ssh-step` | [View](variants/1.9.8-jq-libvirt-sops-ssh-step) |
 | `:1.8.5` | [View](variants/1.8.5) |
-| `:1.8.5-jq-sops-ssh` | [View](variants/1.8.5-jq-sops-ssh) |
-| `:1.8.5-jq-libvirt-sops-ssh` | [View](variants/1.8.5-jq-libvirt-sops-ssh) |
+| `:1.8.5-jq-sops-ssh-step` | [View](variants/1.8.5-jq-sops-ssh-step) |
+| `:1.8.5-jq-libvirt-sops-ssh-step` | [View](variants/1.8.5-jq-libvirt-sops-ssh-step) |
 | `:1.7.5` | [View](variants/1.7.5) |
-| `:1.7.5-jq-sops-ssh` | [View](variants/1.7.5-jq-sops-ssh) |
-| `:1.7.5-jq-libvirt-sops-ssh` | [View](variants/1.7.5-jq-libvirt-sops-ssh) |
+| `:1.7.5-jq-sops-ssh-step` | [View](variants/1.7.5-jq-sops-ssh-step) |
+| `:1.7.5-jq-libvirt-sops-ssh-step` | [View](variants/1.7.5-jq-libvirt-sops-ssh-step) |
 | `:1.6.6` | [View](variants/1.6.6) |
-| `:1.6.6-jq-sops-ssh` | [View](variants/1.6.6-jq-sops-ssh) |
-| `:1.6.6-jq-libvirt-sops-ssh` | [View](variants/1.6.6-jq-libvirt-sops-ssh) |
+| `:1.6.6-jq-sops-ssh-step` | [View](variants/1.6.6-jq-sops-ssh-step) |
+| `:1.6.6-jq-libvirt-sops-ssh-step` | [View](variants/1.6.6-jq-libvirt-sops-ssh-step) |
 | `:1.5.7` | [View](variants/1.5.7) |
-| `:1.5.7-jq-sops-ssh` | [View](variants/1.5.7-jq-sops-ssh) |
-| `:1.5.7-jq-libvirt-sops-ssh` | [View](variants/1.5.7-jq-libvirt-sops-ssh) |
+| `:1.5.7-jq-sops-ssh-step` | [View](variants/1.5.7-jq-sops-ssh-step) |
+| `:1.5.7-jq-libvirt-sops-ssh-step` | [View](variants/1.5.7-jq-libvirt-sops-ssh-step) |
 | `:1.4.7` | [View](variants/1.4.7) |
-| `:1.4.7-jq-sops-ssh` | [View](variants/1.4.7-jq-sops-ssh) |
-| `:1.4.7-jq-libvirt-sops-ssh` | [View](variants/1.4.7-jq-libvirt-sops-ssh) |
+| `:1.4.7-jq-sops-ssh-step` | [View](variants/1.4.7-jq-sops-ssh-step) |
+| `:1.4.7-jq-libvirt-sops-ssh-step` | [View](variants/1.4.7-jq-libvirt-sops-ssh-step) |
 | `:1.3.10` | [View](variants/1.3.10) |
-| `:1.3.10-jq-sops-ssh` | [View](variants/1.3.10-jq-sops-ssh) |
-| `:1.3.10-jq-libvirt-sops-ssh` | [View](variants/1.3.10-jq-libvirt-sops-ssh) |
+| `:1.3.10-jq-sops-ssh-step` | [View](variants/1.3.10-jq-sops-ssh-step) |
+| `:1.3.10-jq-libvirt-sops-ssh-step` | [View](variants/1.3.10-jq-libvirt-sops-ssh-step) |
 | `:1.2.9` | [View](variants/1.2.9) |
-| `:1.2.9-jq-sops-ssh` | [View](variants/1.2.9-jq-sops-ssh) |
-| `:1.2.9-jq-libvirt-sops-ssh` | [View](variants/1.2.9-jq-libvirt-sops-ssh) |
+| `:1.2.9-jq-sops-ssh-step` | [View](variants/1.2.9-jq-sops-ssh-step) |
+| `:1.2.9-jq-libvirt-sops-ssh-step` | [View](variants/1.2.9-jq-libvirt-sops-ssh-step) |
 | `:1.1.9` | [View](variants/1.1.9) |
-| `:1.1.9-jq-sops-ssh` | [View](variants/1.1.9-jq-sops-ssh) |
-| `:1.1.9-jq-libvirt-sops-ssh` | [View](variants/1.1.9-jq-libvirt-sops-ssh) |
+| `:1.1.9-jq-sops-ssh-step` | [View](variants/1.1.9-jq-sops-ssh-step) |
+| `:1.1.9-jq-libvirt-sops-ssh-step` | [View](variants/1.1.9-jq-libvirt-sops-ssh-step) |
 | `:1.0.11` | [View](variants/1.0.11) |
-| `:1.0.11-jq-sops-ssh` | [View](variants/1.0.11-jq-sops-ssh) |
-| `:1.0.11-jq-libvirt-sops-ssh` | [View](variants/1.0.11-jq-libvirt-sops-ssh) |
+| `:1.0.11-jq-sops-ssh-step` | [View](variants/1.0.11-jq-sops-ssh-step) |
+| `:1.0.11-jq-libvirt-sops-ssh-step` | [View](variants/1.0.11-jq-libvirt-sops-ssh-step) |
 | `:0.15.5` | [View](variants/0.15.5) |
-| `:0.15.5-jq-sops-ssh` | [View](variants/0.15.5-jq-sops-ssh) |
-| `:0.15.5-jq-libvirt-sops-ssh` | [View](variants/0.15.5-jq-libvirt-sops-ssh) |
+| `:0.15.5-jq-sops-ssh-step` | [View](variants/0.15.5-jq-sops-ssh-step) |
+| `:0.15.5-jq-libvirt-sops-ssh-step` | [View](variants/0.15.5-jq-libvirt-sops-ssh-step) |
 | `:0.14.11` | [View](variants/0.14.11) |
-| `:0.14.11-jq-sops-ssh` | [View](variants/0.14.11-jq-sops-ssh) |
-| `:0.14.11-jq-libvirt-sops-ssh` | [View](variants/0.14.11-jq-libvirt-sops-ssh) |
+| `:0.14.11-jq-sops-ssh-step` | [View](variants/0.14.11-jq-sops-ssh-step) |
+| `:0.14.11-jq-libvirt-sops-ssh-step` | [View](variants/0.14.11-jq-libvirt-sops-ssh-step) |
 | `:0.13.7` | [View](variants/0.13.7) |
-| `:0.13.7-jq-sops-ssh` | [View](variants/0.13.7-jq-sops-ssh) |
-| `:0.13.7-jq-libvirt-sops-ssh` | [View](variants/0.13.7-jq-libvirt-sops-ssh) |
+| `:0.13.7-jq-sops-ssh-step` | [View](variants/0.13.7-jq-sops-ssh-step) |
+| `:0.13.7-jq-libvirt-sops-ssh-step` | [View](variants/0.13.7-jq-libvirt-sops-ssh-step) |
 | `:0.12.31` | [View](variants/0.12.31) |
-| `:0.12.31-jq-sops-ssh` | [View](variants/0.12.31-jq-sops-ssh) |
-| `:0.12.31-jq-libvirt-sops-ssh` | [View](variants/0.12.31-jq-libvirt-sops-ssh) |
+| `:0.12.31-jq-sops-ssh-step` | [View](variants/0.12.31-jq-sops-ssh-step) |
+| `:0.12.31-jq-libvirt-sops-ssh-step` | [View](variants/0.12.31-jq-libvirt-sops-ssh-step) |
 | `:0.11.15` | [View](variants/0.11.15) |
-| `:0.11.15-jq-sops-ssh` | [View](variants/0.11.15-jq-sops-ssh) |
-| `:0.11.15-jq-libvirt-sops-ssh` | [View](variants/0.11.15-jq-libvirt-sops-ssh) |
+| `:0.11.15-jq-sops-ssh-step` | [View](variants/0.11.15-jq-sops-ssh-step) |
+| `:0.11.15-jq-libvirt-sops-ssh-step` | [View](variants/0.11.15-jq-libvirt-sops-ssh-step) |
 | `:0.10.8` | [View](variants/0.10.8) |
-| `:0.10.8-jq-sops-ssh` | [View](variants/0.10.8-jq-sops-ssh) |
-| `:0.10.8-jq-libvirt-sops-ssh` | [View](variants/0.10.8-jq-libvirt-sops-ssh) |
+| `:0.10.8-jq-sops-ssh-step` | [View](variants/0.10.8-jq-sops-ssh-step) |
+| `:0.10.8-jq-libvirt-sops-ssh-step` | [View](variants/0.10.8-jq-libvirt-sops-ssh-step) |
 | `:0.9.11` | [View](variants/0.9.11) |
-| `:0.9.11-jq-sops-ssh` | [View](variants/0.9.11-jq-sops-ssh) |
-| `:0.9.11-jq-libvirt-sops-ssh` | [View](variants/0.9.11-jq-libvirt-sops-ssh) |
+| `:0.9.11-jq-sops-ssh-step` | [View](variants/0.9.11-jq-sops-ssh-step) |
+| `:0.9.11-jq-libvirt-sops-ssh-step` | [View](variants/0.9.11-jq-libvirt-sops-ssh-step) |
 | `:0.8.8` | [View](variants/0.8.8) |
-| `:0.8.8-jq-sops-ssh` | [View](variants/0.8.8-jq-sops-ssh) |
-| `:0.8.8-jq-libvirt-sops-ssh` | [View](variants/0.8.8-jq-libvirt-sops-ssh) |
-
-All variants include:
-
-- [`step`](https://github.com/smallstep/cli)
+| `:0.8.8-jq-sops-ssh-step` | [View](variants/0.8.8-jq-sops-ssh-step) |
+| `:0.8.8-jq-libvirt-sops-ssh-step` | [View](variants/0.8.8-jq-libvirt-sops-ssh-step) |
 
 ## Development
 
