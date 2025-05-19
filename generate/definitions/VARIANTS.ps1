@@ -11,8 +11,8 @@ $local:VARIANTS_MATRIX = @(
             package_version = $v
             subvariants = @(
                 @{ components = @() }
-                @{ components = @( 'jq', 'sops', 'ssh' ) }
-                @{ components = @( 'jq', 'libvirt', 'sops', 'ssh' ) }
+                @{ components = @( 'jq', 'sops', 'ssh', 'step' ) }
+                @{ components = @( 'jq', 'libvirt', 'sops', 'ssh', 'step' ) }
             )
         }
     }

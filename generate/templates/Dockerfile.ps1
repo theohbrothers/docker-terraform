@@ -21,17 +21,6 @@ Generate-DownloadBinary @{
     testCommand = 'CHECKPOINT_DISABLE=1 terraform version'
 }
 
-$STEP_VERSION = "v0.27.5"
-Generate-DownloadBinary @{
-    binary = 'step'
-    version = $STEP_VERSION
-    archiveformat = '.tar.gz'
-    archivefiles = @()
-    checksumsUrl = "https://github.com/smallstep/cli/releases/download/$STEP_VERSION/checksums.txt"
-    destination = '/usr/local/bin/step'
-    testCommand = 'step version'
-}
-
 if ( $VARIANT['_metadata']['components'] -contains 'jq' ) {
     @"
 RUN apk add --no-cache jq
@@ -91,6 +80,19 @@ RUN apk add --no-cache openssh-client sshpass
 
 
 "@
+}
+
+if ( $VARIANT['_metadata']['components'] -contains 'step' ) {
+    $STEP_VERSION = "v0.27.5"
+    Generate-DownloadBinary @{
+        binary = 'step'
+        version = $STEP_VERSION
+        archiveformat = '.tar.gz'
+        archivefiles = @()
+        checksumsUrl = "https://github.com/smallstep/cli/releases/download/$STEP_VERSION/checksums.txt"
+        destination = '/usr/local/bin/step'
+        testCommand = 'step version'
+    }
 }
 
 @"
