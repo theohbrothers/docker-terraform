@@ -30,11 +30,14 @@ RUN set -eux; \
     FILE=terraform.zip; \
     wget -q "$URL" -O "$FILE"; \
     echo "$SHA256  $FILE" | sha256sum -c -; \
-    unzip "$FILE" terraform; \
+    unzip "$FILE" -d extract; \
     mkdir -pv /usr/local/bin; \
-    mv -v terraform /usr/local/bin/terraform; \
+    BIN=$( find extract -type f -name "terraform" | head -n1 ); \
+    mv -v "$BIN" /usr/local/bin/terraform; \
     chmod +x /usr/local/bin/terraform; \
     CHECKPOINT_DISABLE=1 terraform version; \
+    rm -rf extract; \
+    rm -f "$FILE"; \
     :
 
 RUN apk add --no-cache ca-certificates
