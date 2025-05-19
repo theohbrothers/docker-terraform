@@ -28,6 +28,10 @@ $(
     }
 }) -join ''
 )
+All variants include:
+
+- [``step``](https://github.com/smallstep/cli)
+
 
 "@
 @'

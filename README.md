@@ -76,6 +76,10 @@ The base image is `alpine`. The image is not the closed-source [`hashicorp/terra
 | `:0.8.8-jq-sops-ssh` | [View](variants/0.8.8-jq-sops-ssh) |
 | `:0.8.8-jq-libvirt-sops-ssh` | [View](variants/0.8.8-jq-libvirt-sops-ssh) |
 
+All variants include:
+
+- [`step`](https://github.com/smallstep/cli)
+
 ## Development
 
 Requires Windows `powershell` or [`pwsh`](https://github.com/PowerShell/PowerShell).
