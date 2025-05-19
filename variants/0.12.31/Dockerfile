@@ -2,6 +2,12 @@ FROM alpine:3.17
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
+
+RUN apk add --no-cache ca-certificates
+
+# Disable terraform checkpoints. See: https://developer.hashicorp.com/terraform/cli/commands#upgrade-and-security-bulletin-checks
+ENV CHECKPOINT_DISABLE=1
+
 # Install terraform
 RUN set -eux; \
     TERRAFORM_VERSION=0.12.31; \
@@ -43,8 +49,6 @@ RUN set -eux; \
     rm -rf extract; \
     rm -f "$FILE"; \
     :
-
-RUN apk add --no-cache ca-certificates
 
 # Install step
 RUN set -eux; \
@@ -92,8 +96,5 @@ RUN set -eux; \
     rm -rf extract; \
     rm -f "$FILE"; \
     :
-
-# Disable telemetry. See: https://developer.hashicorp.com/terraform/cli/commands#upgrade-and-security-bulletin-checks
-ENV CHECKPOINT_DISABLE=1
 
 CMD [ "terraform" ]

@@ -4,6 +4,12 @@ ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "I am running on `$BUILDPLATFORM, building for `$TARGETPLATFORM"
 
+RUN apk add --no-cache ca-certificates
+
+# Disable terraform checkpoints. See: https://developer.hashicorp.com/terraform/cli/commands#upgrade-and-security-bulletin-checks
+ENV CHECKPOINT_DISABLE=1
+
+
 "@
 
 Generate-DownloadBinary @{
@@ -14,12 +20,6 @@ Generate-DownloadBinary @{
     destination = '/usr/local/bin/terraform'
     testCommand = 'CHECKPOINT_DISABLE=1 terraform version'
 }
-
-@"
-RUN apk add --no-cache ca-certificates
-
-
-"@
 
 $STEP_VERSION = "v0.27.5"
 Generate-DownloadBinary @{
@@ -94,9 +94,6 @@ RUN apk add --no-cache openssh-client sshpass
 }
 
 @"
-# Disable telemetry. See: https://developer.hashicorp.com/terraform/cli/commands#upgrade-and-security-bulletin-checks
-ENV CHECKPOINT_DISABLE=1
-
 CMD [ "terraform" ]
 
 "@
