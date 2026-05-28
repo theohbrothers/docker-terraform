@@ -12,9 +12,9 @@ The base image is `alpine`. The image is not the closed-source [`hashicorp/terra
 
 | Tag | Dockerfile Build Context |
 |:-------:|:---------:|
-| `:1.15.4`, `:latest` | [View](variants/1.15.4) |
-| `:1.15.4-jq-sops-ssh-step` | [View](variants/1.15.4-jq-sops-ssh-step) |
-| `:1.15.4-jq-libvirt-sops-ssh-step` | [View](variants/1.15.4-jq-libvirt-sops-ssh-step) |
+| `:1.15.5`, `:latest` | [View](variants/1.15.5) |
+| `:1.15.5-jq-sops-ssh-step` | [View](variants/1.15.5-jq-sops-ssh-step) |
+| `:1.15.5-jq-libvirt-sops-ssh-step` | [View](variants/1.15.5-jq-libvirt-sops-ssh-step) |
 | `:1.14.9` | [View](variants/1.14.9) |
 | `:1.14.9-jq-sops-ssh-step` | [View](variants/1.14.9-jq-sops-ssh-step) |
 | `:1.14.9-jq-libvirt-sops-ssh-step` | [View](variants/1.14.9-jq-libvirt-sops-ssh-step) |
