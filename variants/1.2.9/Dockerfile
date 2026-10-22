@@ -13,7 +13,7 @@ RUN set -eux; \
     TERRAFORM_VERSION=1.2.9; \
     case "$( uname -m )" in \
         'x86') \
-            URL="https://releases.hashicorp.com/terraform/1.2.9/terraform_1.2.9_linux_amd64.zip"; \
+            URL="https://releases.hashicorp.com/terraform/1.2.9/terraform_1.2.9_linux_386.zip"; \
             SHA256=f9028c4834cd3f2d20975e8ae9897e48f811bb8d494b734a87dab0d3968039c7; \
             ;; \
         'x86_64') \
