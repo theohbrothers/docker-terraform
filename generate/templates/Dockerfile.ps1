@@ -17,6 +17,7 @@ Generate-DownloadBinary @{
     version = $VARIANT['_metadata']['package_version']
     checksumsUrl = "https://releases.hashicorp.com/terraform/$( $VARIANT['_metadata']['package_version'] )/terraform_$( $VARIANT['_metadata']['package_version'] )_SHA256SUMS"
     archiveformat = '.zip'
+    # platforms = $VARIANT['_metadata']['platforms']
     destination = '/usr/local/bin/terraform'
     testCommand = 'CHECKPOINT_DISABLE=1 terraform version'
 }
@@ -87,9 +88,9 @@ if ( $VARIANT['_metadata']['components'] -contains 'step' ) {
     Generate-DownloadBinary @{
         binary = 'step'
         version = $STEP_VERSION
-        archiveformat = '.tar.gz'
-        archivefiles = @()
         checksumsUrl = "https://github.com/smallstep/cli/releases/download/$STEP_VERSION/checksums.txt"
+        archiveformat = '.tar.gz'
+        # platforms = $VARIANT['_metadata']['platforms']
         destination = '/usr/local/bin/step'
         testCommand = 'step version'
     }
