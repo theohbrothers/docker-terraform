@@ -39,40 +39,22 @@ RUN apk add --no-cache libvirt-client
 }
 
 if ( $VARIANT['_metadata']['components'] -contains 'sops' ) {
-#     if ( $VARIANT['_metadata']['distro'] -eq 'alpine' -and $VARIANT['_metadata']['distro_version'] -in @('3.6', '3.5', '3.4', '3.3') ) {
-# @"
-# # Fix generic certification validation errors in alpine 3.5: https://github.com/docker-library/official-images/issues/2773#issuecomment-350431934
-# RUN apk add --no-cache ca-certificates
+    $SOPS_VERSION = "3.13.3"
+    Generate-DownloadBinary @{
+        binary = 'sops'
+        version = $SOPS_VERSION
+        checksumsUrl = "https://github.com/getsops/sops/releases/download/v$SOPS_VERSION/sops-v$SOPS_VERSION.checksums.txt"
+        platformFallback = 'linux/amd64'
+        destination = '/usr/local/bin/sops'
+        testCommand = 'sops --version --disable-version-check'
+    }
 
-# # Fix wget not working in alpine:3.6 and below. https://github.com/gliderlabs/docker-alpine/issues/423
-# # RUN apk add --no-cache libressl
-
-# # Fix wget error 'wget: SSL/TLS certificate is not being validated!' in alpine:3.5, use curl instead: https://github.com/docker-library/official-images/issues/2773
-# RUN set -eux; \
-#     apk add --no-cache curl; \
-#     curl -sSL https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux > /usr/local/bin/sops; \
-#     chmod +x /usr/local/bin/sops; \
-#     sha256sum /usr/local/bin/sops | grep '^53aec65e45f62a769ff24b7e5384f0c82d62668dd96ed56685f649da114b4dbb '; \
-#     sops --version; \
-#     apk del curl
-
-# RUN apk add --no-cache gnupg
-
-
-# "@
-#     }else {
-@"
-RUN set -eux; \
-    wget -qO- https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux > /usr/local/bin/sops; \
-    chmod +x /usr/local/bin/sops; \
-    sha256sum /usr/local/bin/sops | grep '^53aec65e45f62a769ff24b7e5384f0c82d62668dd96ed56685f649da114b4dbb '; \
-    sops --version
-
+    @"
+# Install gnupg for sops
 RUN apk add --no-cache gnupg
 
 
 "@
-    # }
 }
 
 if ( $VARIANT['_metadata']['components'] -contains 'ssh' ) {
