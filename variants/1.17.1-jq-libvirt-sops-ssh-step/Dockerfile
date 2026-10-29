@@ -1,0 +1,140 @@
+FROM alpine:3.17
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
+
+RUN apk add --no-cache ca-certificates
+
+# Disable terraform checkpoints. See: https://developer.hashicorp.com/terraform/cli/commands#upgrade-and-security-bulletin-checks
+ENV CHECKPOINT_DISABLE=1
+
+# Install terraform
+RUN set -eux; \
+    TERRAFORM_VERSION=1.17.1; \
+    case "$( uname -m )" in \
+        'x86') \
+            URL="https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_386.zip"; \
+            SHA256=8a7f73179421fa35b8d03cb09aee047c7e4ad55a964f7270425efcf942dbe269; \
+            ;; \
+        'x86_64') \
+            URL="https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_amd64.zip"; \
+            SHA256=4638628058e71a55212b1c563712eac03b902128f40740f3dc8174df12135061; \
+            ;; \
+        'armhf') \
+            URL="https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_arm.zip"; \
+            SHA256=ae74e5eb2f82e3c37f205e479bed89bbdf7da449a3d75b6ae233ab950b4811dc; \
+            ;; \
+        'armv7l') \
+            URL="https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_arm.zip"; \
+            SHA256=ae74e5eb2f82e3c37f205e479bed89bbdf7da449a3d75b6ae233ab950b4811dc; \
+            ;; \
+        'aarch64') \
+            URL="https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_arm64.zip"; \
+            SHA256=988e950a1c23058093b0e66ab2d5fb53fc18345ecfbd5871acf51dbac9325edd; \
+            ;; \
+        's390x') \
+            URL="https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_s390x.zip"; \
+            SHA256=1a031803d120142b3ba7cf508fdd31017c40987a3dcd85896496e62e181c41b3; \
+            ;; \
+        *) \
+            echo "Architecture not supported"; \
+            exit 1; \
+            ;; \
+    esac; \
+    FILE=terraform.zip; \
+    wget -q "$URL" -O "$FILE"; \
+    echo "$SHA256  $FILE" | sha256sum -c -; \
+    unzip "$FILE" -d extract; \
+    mkdir -pv /usr/local/bin; \
+    BIN=$( find extract -type f -name "terraform" | head -n1 ); \
+    mv -v "$BIN" /usr/local/bin/terraform; \
+    chmod +x /usr/local/bin/terraform; \
+    CHECKPOINT_DISABLE=1 terraform version; \
+    rm -rf extract; \
+    rm -f "$FILE"; \
+    :
+
+RUN apk add --no-cache jq
+
+RUN apk add --no-cache libvirt-client
+
+# Install sops
+RUN set -eux; \
+    SOPS_VERSION=3.13.3; \
+    case "$( uname -m )" in \
+        'x86_64') \
+            URL="https://github.com/getsops/sops/releases/download/v3.13.3/sops-v3.13.3.linux.amd64"; \
+            SHA256=e5bec3346a873ae91d871550f3e698c1aad962aff462a080e40f25fde17fef6b; \
+            ;; \
+        'aarch64') \
+            URL="https://github.com/getsops/sops/releases/download/v3.13.3/sops-v3.13.3.linux.arm64"; \
+            SHA256=53b0abacd38ef1b12a66d6c100956691b9cefce018d91f81e73ddf7438b94d77; \
+            ;; \
+        *) \
+            URL="https://github.com/getsops/sops/releases/download/v3.13.3/sops-v3.13.3.linux.amd64"; \
+            SHA256=e5bec3346a873ae91d871550f3e698c1aad962aff462a080e40f25fde17fef6b; \
+            ;; \
+    esac; \
+    FILE=sops; \
+    wget -q "$URL" -O "$FILE"; \
+    echo "$SHA256  $FILE" | sha256sum -c -; \
+    BIN=sops; \
+    mkdir -pv /usr/local/bin; \
+    mv -v "$BIN" /usr/local/bin/sops; \
+    chmod +x /usr/local/bin/sops; \
+    sops --version --disable-version-check; \
+    :
+
+# Install gnupg for sops
+RUN apk add --no-cache gnupg
+
+RUN apk add --no-cache openssh-client sshpass
+
+# Install step
+RUN set -eux; \
+    STEP_VERSION=v0.27.5; \
+    case "$( uname -m )" in \
+        'x86') \
+            URL="https://github.com/smallstep/cli/releases/download/v0.27.5/step_linux_386.tar.gz"; \
+            SHA256=a4cb4cb893424780ffb4c8fee4ecf5b92e93c4c9b7ebd242631c272197dff2e0; \
+            ;; \
+        'x86_64') \
+            URL="https://github.com/smallstep/cli/releases/download/v0.27.5/step_linux_amd64.tar.gz"; \
+            SHA256=2099be3d0cc7bc3559d771393378aa6c3e96908a929dccd570c8352e2440ad77; \
+            ;; \
+        'armhf') \
+            URL="https://github.com/smallstep/cli/releases/download/v0.27.5/step_linux_armv6.tar.gz"; \
+            SHA256=97e8827c0ccfbf7779878f9a54b6fa72ba9aca4aead380d7a1cd85bebb04f365; \
+            ;; \
+        'armv7l') \
+            URL="https://github.com/smallstep/cli/releases/download/v0.27.5/step_linux_armv7.tar.gz"; \
+            SHA256=c0adeba5d5c2bcf70edf5f626d48c3201c204fe671591c12005cf5b4d6e90349; \
+            ;; \
+        'aarch64') \
+            URL="https://github.com/smallstep/cli/releases/download/v0.27.5/step_linux_arm64.tar.gz"; \
+            SHA256=f7f52300c3550bfb5a21a5fb2610dced6c3d24a008bec7e968987e7bc67f7ff4; \
+            ;; \
+        'ppc64le') \
+            URL="https://github.com/smallstep/cli/releases/download/v0.27.5/step_linux_ppc64le.tar.gz"; \
+            SHA256=0ac0e38b2f0c3b3a075a00adba43e1a0bca1549d0e13293bd3205416cd993974; \
+            ;; \
+        *) \
+            echo "Architecture not supported"; \
+            exit 1; \
+            ;; \
+    esac; \
+    FILE=step.tar.gz; \
+    wget -q "$URL" -O "$FILE"; \
+    echo "$SHA256  $FILE" | sha256sum -c -; \
+    mkdir -p extract; \
+    tar -C extract -xvf "$FILE" --no-same-owner --no-same-permissions; \
+    mkdir -pv /usr/local/bin; \
+    BIN=$( find extract -type f -name "step" | head -n1 ); \
+    mv -v "$BIN" /usr/local/bin/step; \
+    chmod +x /usr/local/bin/step; \
+    step version; \
+    rm -rf extract; \
+    rm -f "$FILE"; \
+    :
+
+CMD [ "terraform" ]
