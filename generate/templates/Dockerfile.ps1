@@ -44,6 +44,7 @@ if ( $VARIANT['_metadata']['components'] -contains 'sops' ) {
         binary = 'sops'
         version = $SOPS_VERSION
         checksumsUrl = "https://github.com/getsops/sops/releases/download/v$SOPS_VERSION/sops-v$SOPS_VERSION.checksums.txt"
+        # platforms = $VARIANT['_metadata']['platforms']
         platformFallback = 'linux/amd64'
         destination = '/usr/local/bin/sops'
         testCommand = 'sops --version --disable-version-check'
@@ -66,11 +67,11 @@ RUN apk add --no-cache openssh-client sshpass
 }
 
 if ( $VARIANT['_metadata']['components'] -contains 'step' ) {
-    $STEP_VERSION = "v0.27.5"
+    $STEP_VERSION = "0.31.0"
     Generate-DownloadBinary @{
         binary = 'step'
         version = $STEP_VERSION
-        checksumsUrl = "https://github.com/smallstep/cli/releases/download/$STEP_VERSION/checksums.txt"
+        checksumsUrl = "https://github.com/smallstep/cli/releases/download/v$STEP_VERSION/checksums.txt"
         archiveformat = '.tar.gz'
         # platforms = $VARIANT['_metadata']['platforms']
         destination = '/usr/local/bin/step'
